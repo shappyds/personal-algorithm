@@ -32,6 +32,22 @@ class LinkedList {
   }
 
   /**
+   * 新增到头部
+   * @param {*} val 
+   */
+  addToHead(val) {
+    let node = new Node(val)
+
+    node.next = this.head.next
+
+    this.head.next = node
+
+    this.len++
+
+    return node
+  }
+
+  /**
    * 往某个节点后新增节点
    * @param {*} val
    * @param {*} newVal
@@ -79,6 +95,18 @@ class LinkedList {
     }
     this.len--
     node.next = node.next.next
+  }
+
+  /**
+   * 移除最后一个节点
+   */
+  removeLast() {
+    let node = this.head.next
+    while(node && node.next) {
+      node = node.next
+    }
+
+    this.remove(node.value)
   }
 
   /**
@@ -134,17 +162,22 @@ class LinkedList {
 }
 
 // Test
-const myList = new LinkedList()
-myList.add('aaa')
-myList.add('bbb')
-myList.add('ccc')
+// const myList = new LinkedList()
+// myList.add('aaa')
+// myList.add('bbb')
+// myList.add('ccc')
 
-myList.insert('bbb', 'ddd')
+// myList.insert('bbb', 'ddd')
 
-console.log(myList.getLength());
+// console.log(myList.getLength());
 
-console.log(myList.display());
+// console.log(myList.display());
 
-myList.remove('bbb')
-console.log(myList.display());
-console.log(myList.findByIndex(2));
+// myList.remove('bbb')
+// console.log(myList.display());
+// console.log(myList.findByIndex(2));
+
+module.exports = {
+  LinkedList,
+  Node
+}
