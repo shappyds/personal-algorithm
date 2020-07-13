@@ -1,6 +1,11 @@
 // 插入排序
 function insertSort(arr) {
   let len = arr.length
+  
+  if ( len <= 1) {
+    return arr
+  }
+  
   for (let i = 1; i < len; i++) {
     let key = arr[i] // 待插入的元素
     let j = i - 1
